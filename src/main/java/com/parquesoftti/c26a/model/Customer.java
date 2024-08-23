@@ -1,16 +1,11 @@
 package com.parquesoftti.c26a.model;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.hibernate.annotations.NotFound;
+import lombok.*;
 
 @Entity
-@Data
+@Setter
+@Getter
 @Table(name = "customers")
 @AllArgsConstructor
 @NoArgsConstructor
