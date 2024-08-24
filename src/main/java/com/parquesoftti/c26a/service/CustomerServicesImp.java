@@ -28,13 +28,13 @@ public class CustomerServicesImp implements CustomerService{
     }
 
     @Override
-    @Transactional(readOnly = false,propagation = Propagation.REQUIRED)
+    @Transactional(readOnly = false,propagation = Propagation.REQUIRED,rollbackFor = RuntimeException.class)
     public Customer save(Customer customer) {
         return customerRepository.save(customer);
     }
 
     @Override
-    @Transactional(readOnly = false,propagation = Propagation.REQUIRED)
+    @Transactional(readOnly = false,propagation = Propagation.REQUIRED,rollbackFor = RuntimeException.class)
     public Customer update(Long id, Customer customer) {
         Customer customersTmp = customerRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("customer not found"));
@@ -53,6 +53,7 @@ public class CustomerServicesImp implements CustomerService{
     @Override
     @Transactional(readOnly = true)
     public Customer findByName(String name) {
-        return customerRepository.findByCustomerName(name).orElseThrow(()->new RuntimeException("customer not found"));
+        return customerRepository.findByCustomerName(name)
+                .orElseThrow(()->new RuntimeException("customer not found"));
     }
 }
