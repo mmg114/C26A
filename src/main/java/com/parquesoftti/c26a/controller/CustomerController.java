@@ -20,6 +20,8 @@ public class CustomerController {
         return  customerService.findAll();
     }
 
+
+
     @GetMapping("/{id}")
     public Customer findById(@PathVariable Long id){
         return  customerService.findById(id);
@@ -40,7 +42,10 @@ public class CustomerController {
          return   customerService.update(id,customer);
     }
 
-
+    @GetMapping("/search")
+    public Customer findByName(@RequestParam String name){
+        return  customerService.findByName(name);
+    }
 
 
 }
